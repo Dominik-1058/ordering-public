@@ -24,13 +24,13 @@ function App() {
         {user ? <HeaderComponent /> : null }
         <div className={classes.layout}>
           <Routes>
-              <Route path="ordering-public/#/login" element={<LoginPage />} />
-              <Route path="ordering-public/#/" element={<ProtectedRoute />} >
-                <Route path="ordering-public/#/" element={<HomePage />} />
-                <Route path="ordering-public/#/leaderboard" element={<LeaderboardPage />} />
-                <Route path="ordering-public/#/admin/manage-items" element={<ManageItemsPage />} />
-                <Route path="ordering-public/#/admin/manage-orders" element={<ManageOrdersPage />} />
-                <Route path="ordering-public/#/admin/manage-ingredients" element={<ManageIngredientsPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/" element={<ProtectedRoute />} >
+                <Route path="/" element={<HomePage />} />
+                <Route path="/leaderboard" element={<LeaderboardPage />} />
+                <Route path="/admin/manage-items" element={<ManageItemsPage />} />
+                <Route path="/admin/manage-orders" element={<ManageOrdersPage />} />
+                <Route path="/admin/manage-ingredients" element={<ManageIngredientsPage />} />
               </Route>
           </Routes>
         </div>
