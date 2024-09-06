@@ -1,5 +1,6 @@
 import { Table } from '@mantine/core';
 import { useEffect, useState } from 'react';
+import config from '../config.cfg';
 
 function ManageIngredientsPage() {
 
@@ -7,7 +8,7 @@ function ManageIngredientsPage() {
 
     useEffect(() => {
         // Fetch from http://127.0.0.1:8000/api/ingredients/
-        fetch('http://127.0.0.1:8000/api/ingredients/').then((response) => {
+        fetch(config.api + '/api/ingredients/').then((response) => {
             if (response.ok) {
                 return response.json().then((data) => {
                     setIngredients(data);

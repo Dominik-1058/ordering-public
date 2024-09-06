@@ -1,6 +1,7 @@
 import { Table, Button } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../AuthContext';
+import config from '../config.cfg';
 
 const ManageOrdersPage = () => {
     const [orders, setOrders] = useState({
@@ -11,7 +12,7 @@ const ManageOrdersPage = () => {
     const { user } = useAuth();
 
     const fetchOrders = async() => {
-        fetch('http://127.0.0.1:8000/api/orders/').then((response) => {
+        fetch(config.api + '/api/orders/').then((response) => {
             if (response.ok) { return response.json(); }
             throw response;
         }).then((data) => {
@@ -32,7 +33,7 @@ const ManageOrdersPage = () => {
 
     const updateOrderStatus = async(orderID, status) => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/orders/status/', {
+            const response = await fetch(config.api + '/api/orders/status/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

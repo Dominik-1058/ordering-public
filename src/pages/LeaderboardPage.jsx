@@ -6,6 +6,8 @@ import LeaderboardListComponent from '../components/LeaderboardListComponent';
 import QrCodeComponent from '../components/QrCodeComponent';
 import FloatingActionButtonComponent from '../components/FloatingActionButtonComponent';
 
+import config from '../config.cfg';
+
 const LeaderboardPage = () => {
     const [activeSegment, setActiveSegment] = useState('Total');
     const [leaderboardData, setLeaderboardData] = useState({
@@ -16,7 +18,7 @@ const LeaderboardPage = () => {
 
     useEffect(() => {
         // Fetch users from the API
-        fetch('http://127.0.0.1:8000/api/users/leaderboard')
+        fetch(config.api + '/api/users/leaderboard')
             .then((response) => {
                 if (response.ok) { return response.json(); }
                 throw response

@@ -9,6 +9,8 @@ import cockStockUrl from '../assets/img/cock-stock.jpg';
 import { useAuth } from '../AuthContext';
 import { notifications } from '@mantine/notifications';
 
+import config from '../config.cfg';
+
 const ItemListComponent = () => {
     const [items, setItems] = useState([]);
     const { user } = useAuth();
@@ -24,7 +26,7 @@ const ItemListComponent = () => {
     }
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/items/').then((response) => {
+        fetch(config.api + '/api/items/').then((response) => {
             if (response.ok) {
                 return response.json().then((data) => {
                     setItems(data);
@@ -40,7 +42,7 @@ const ItemListComponent = () => {
 
     const placeOrder = async() => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/orders/', {
+            const response = await fetch(config.api + '/api/orders/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
