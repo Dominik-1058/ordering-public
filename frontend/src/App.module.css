@@ -1,0 +1,20 @@
+.layout {
+    margin-top: 56px;
+    height: 100%;
+}
+
+.App {
+    background-color: var(--mantine-color-mainBg-0);
+    color: var(--mantine-color-mainText-0);
+    min-height: calc(100vh - 56px);
+    height: calc(100vh - 56px);
+}
+
+@media screen and (min-width: 768px) {
+    .layout {
+        margin-top: 56px;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-bottom: 3rem;
+    }
+}
