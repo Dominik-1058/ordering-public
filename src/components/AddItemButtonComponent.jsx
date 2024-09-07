@@ -9,20 +9,14 @@ const AddItemButtonComponent = ({ itemID, currentItem, setCurrentItem }) => {
         setIsInCard(currentItem === itemID);
     }, [currentItem]);
 
-    console.log("isinCart: ", isInCart);
-
     const toggleInCart = () => {
         if (isInCart) {
             setCurrentItem(null);
             setIsInCard(false);
-            console.log("Removed item from cart: ", itemID);
         } else {
-            console.log("Item ID: ", itemID);
             setCurrentItem(itemID);
             setIsInCard(true);
-            console.log("Added item to cart: ", itemID);
         }
-        console.log("Current item: ", currentItem);
     }
     
     return (

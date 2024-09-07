@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { IconPlus, IconInfoCircle, IconArrowBack, IconNumber1, IconShoppingCartCopy } from '@tabler/icons-react';
-import { Box, Button, Container, Group, Stack, Table, Title, Text } from '@mantine/core';
+import { Box, Button, Container, Group, Stack, Table, Title, Text, Affix } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import AddItemButtonComponent from './AddItemButtonComponent';
 import classes from './ItemListComponent.module.css';
@@ -21,8 +21,6 @@ const ItemListComponent = () => {
 
     const setItem = (itemID) => {
         setCurrentItem(itemID);
-        console.log("Real one Current item: ", currentItem);
-        console.log("Real one Item ID: ", itemID);
     }
 
     useEffect(() => {
@@ -34,7 +32,6 @@ const ItemListComponent = () => {
             }
             throw response;
         }).then((data) => {
-            console.log(data);
         }).catch((error) => {
             console.error('Error fetching data:', error);
         });
@@ -106,8 +103,6 @@ const ItemListComponent = () => {
         setFlippedIndex(index === flippedIndex ? null : index);
     };
 
-    console.log(items);
-
     return (
         <Box p={10}>
                 <Group justify='space-between' align='center' style={{width: "100%", height: "50px"}}>
@@ -115,7 +110,7 @@ const ItemListComponent = () => {
                         <Text c='mainYellow.5' component='small' size='sm'>Japanese inspired cocktails</Text>
                         <Title c='mainYellow.5' order={2}>Choose your drink</Title>
                     </Stack>
-                    <Button onClick={placeOrder} size='3rem' disabled={currentItem == null} style={{opacity: currentItem == null ? "0.5" : "1"}}>
+                    {/* <Button onClick={placeOrder} size='3rem' disabled={currentItem == null} style={{opacity: currentItem == null ? "0.5" : "1"}}>
                         <IconShoppingCartCopy
                             size="3rem"
                             style={{
@@ -123,7 +118,18 @@ const ItemListComponent = () => {
                                 border: '1px solid var(--mantine-color-mainYellow-4)',
                             }}
                         />
-                    </Button>
+                    </Button> */}
+                    <Affix position={{ position: 'fixed', top: 70, right: 10 }}>
+                        <Button onClick={placeOrder} size='3rem' disabled={currentItem == null} style={{opacity: currentItem == null ? "0.5" : "1"}}>
+                            <IconShoppingCartCopy
+                                size="3rem"
+                                style={{
+                                    color: 'var(--mantine-color-mainYellow-4)',
+                                    border: '1px solid var(--mantine-color-mainYellow-4)',
+                                }}
+                            />
+                        </Button>
+                    </Affix>
                 </Group>
             <Container >
                 <Stack direction="column" gap="md" display="flex" mt="xl" style={{ overflowY: "scroll", height: "calc(100vh - 100px - 76px)", scrollSnapType: "y mandatory"}}>
