@@ -38,7 +38,7 @@ const LeaderboardListComponent = ({ leaderboard_type, type }) => {
     });
 
     return (
-        <Stack mt="md" style={{ backgroundColor: 'var(--mantine-color-mainBg-2)', gap: 0, borderRadius: '30px' }}>
+        <Stack mt="md" style={{ backgroundColor: 'var(--mantine-color-mainBg-0)', gap: 0, borderRadius: '30px' }}>
             {leaderboard}
         </Stack>            
     );

@@ -93,12 +93,12 @@ export function HeaderSimple() {
 
           </Group>
           <Group gap={5}>
-            <Text size='xs'>Hello, {user.username}</Text>
+            <Text size='xs' style={{ color: 'var(--mantine-color-mainYellow-4)' }}>Hello, {user.username}</Text>
             <Button
               onClick={handleLogout}
               variant='subtle'
             >
-              <IconLogout size="1rem" />
+              <IconLogout size="1rem" style={{ color: 'var(--mantine-color-mainYellow-4)' }}/>
             </Button>
           </Group>
         </div>

@@ -106,6 +106,8 @@ const ItemListComponent = () => {
         setFlippedIndex(index === flippedIndex ? null : index);
     };
 
+    console.log(items);
+
     return (
         <Box p={10}>
                 <Group justify='space-between' align='center' style={{width: "100%", height: "50px"}}>
@@ -212,7 +214,23 @@ const ItemListComponent = () => {
                                                 color: 'var(--mantine-color-mainYellow-4)',
                                                 border: '1px solid var(--mantine-color-mainYellow-4)',
                                              }} onClick={() => handleFlip(index)} />
-                                            <Text size="xl" c="mainYellow.5">{item.description ? item.description : 'No description available!'}</Text>
+                                            <Stack justify='center' align='center'>
+                                                <Title order={3} style={{ color: 'var(--mantine-color-mainYellow-4)' }}>{item.name}</Title>
+                                                <Box  p={'1rem'}>
+                                                    <Text size="xl" c="mainYellow.5">
+                                                        {item.ingredients && item.ingredients.length > 0 ? (
+                                                            item.ingredients.map((ingredient, index) => (
+                                                                <span key={index}>
+                                                                    {ingredient.name}
+                                                                    {index < item.ingredients.length - 1 && ', '}
+                                                                </span>
+                                                            ))
+                                                        ) : (
+                                                            'No ingredients available!'
+                                                        )}
+                                                    </Text>
+                                                </Box>
+                                            </Stack>
                                         </div>
                                     </div>
                                 </div>
