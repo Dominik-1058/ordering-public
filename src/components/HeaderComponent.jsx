@@ -8,10 +8,10 @@ import { useAuth } from '../AuthContext';
 
 const links = [
   { link: '/', label: 'Home', icon: <IconGlassCocktail size="2rem" stroke={1.5}/> },
-  { link: '/leaderboard', label: 'Leaderboard', icon: <IconChartBar size="2rem" stroke={1.5}/> },
-  { link: '/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
-  { link: '/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
-  { link: '/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
+  { link: '/#/leaderboard', label: 'Leaderboard', icon: <IconChartBar size="2rem" stroke={1.5}/> },
+  { link: '/#/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
+  { link: '/#/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
+  { link: '/#/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
 ];
 
 export function HeaderSimple() {
@@ -44,6 +44,11 @@ export function HeaderSimple() {
 
   const { user, logout } = useAuth();
 
+  console.log('location', location);
+  console.log('homeLink', homeLink);
+  console.log('leaderboardLink', leaderboardLink);
+  console.log(location.pathname === leaderboardLink.link.split('#')[1]);
+
   const handleLogout = () => {
     logout();
   }
@@ -68,7 +73,7 @@ export function HeaderSimple() {
           </Group>
 
           <Group hiddenFrom='xs'>
-            {location.pathname === leaderboardLink.link ? (
+            {location.pathname === leaderboardLink.link.split('#')[1] ? (
               <>
                 <Anchor 
                   key={homeLink.label}
