@@ -119,7 +119,19 @@ const ItemListComponent = () => {
                             }}
                         />
                     </Button> */}
-                    <Affix position={{ position: 'fixed', top: 70, right: 10 }}>
+                    {/* <Affix position={{ position: 'fixed', top: 70, right: 10 }}>
+                        <Button onClick={placeOrder} size='3rem' disabled={currentItem == null} style={{opacity: currentItem == null ? "0.5" : "1"}}>
+                            <IconShoppingCartCopy
+                                size="3rem"
+                                style={{
+                                    color: 'var(--mantine-color-mainYellow-4)',
+                                    border: '1px solid var(--mantine-color-mainYellow-4)',
+                                }}
+                            />
+                        </Button>
+                    </Affix> */}
+                </Group>
+                <Affix position={{ position: 'fixed', top: 70, right: 40 }}>
                         <Button onClick={placeOrder} size='3rem' disabled={currentItem == null} style={{opacity: currentItem == null ? "0.5" : "1"}}>
                             <IconShoppingCartCopy
                                 size="3rem"
@@ -130,7 +142,6 @@ const ItemListComponent = () => {
                             />
                         </Button>
                     </Affix>
-                </Group>
             <Container >
                 <Stack direction="column" gap="md" display="flex" mt="xl" style={{ overflowY: "scroll", height: "calc(100vh - 100px - 76px)", scrollSnapType: "y mandatory"}}>
                     {items.map((item, index) => (
