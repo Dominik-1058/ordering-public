@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     // Function to handle screen size change
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 430);
+      setIsSmallScreen(window.innerWidth < 530);
     };
 
     // Add event listener to listen for window resizing
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className={classes.App}>
       <>
-        {isSmallScreen && user && user.name !== 'admin' ? (
+        {isSmallScreen || user && user.username === 'admin' || !user ? (
           <>
             {user ? <HeaderComponent /> : null}
             <div className={classes.layout}>
