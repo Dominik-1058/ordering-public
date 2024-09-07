@@ -219,12 +219,19 @@ const ItemListComponent = () => {
                                                 <Box  p={'1rem'}>
                                                     <Text size="xl" c="mainYellow.5">
                                                         {item.ingredients && item.ingredients.length > 0 ? (
-                                                            item.ingredients.map((ingredient, index) => (
+                                                            <>
+                                                            <div>
+                                                                {item.ingredients.map((ingredient, index) => (
                                                                 <span key={index}>
                                                                     {ingredient.name}
                                                                     {index < item.ingredients.length - 1 && ', '}
                                                                 </span>
-                                                            ))
+                                                                ))}
+                                                            </div>
+                                                            {item.ingredients.some(ingredient => ingredient.alcoholic) && (
+                                                                <div style={{ paddingTop: '1rem', fontStyle: 'italic' }}>Alcoholic</div>
+                                                            )}
+                                                            </>
                                                         ) : (
                                                             'No ingredients available!'
                                                         )}

@@ -79,7 +79,7 @@ export function HeaderSimple() {
                   {homeLink.icon}
                 </Anchor>
               </>
-            ) : location.pathname === homeLink.link ? (
+            ) : location.pathname === homeLink.link.split('#')[1] ? (
               <>
                 <Anchor 
                   key={leaderboardLink.label}
