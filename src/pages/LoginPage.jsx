@@ -20,6 +20,10 @@ const LoginPage = () => {
     event.preventDefault();
     const { username, password } = event.target.elements;
 
+    if (username.value === '') {
+      setError(true);
+      return;
+    }
     
     fetch(config.api + '/api/users/token', {
       method: 'POST',
