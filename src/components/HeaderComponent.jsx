@@ -7,11 +7,11 @@ import classes from './HeaderComponent.module.css';
 import { useAuth } from '../AuthContext';
 
 const links = [
-  { link: '/', label: 'Home', icon: <IconGlassCocktail size="2rem" stroke={1.5}/> },
+  { link: '/ordering-public/', label: 'Home', icon: <IconGlassCocktail size="2rem" stroke={1.5}/> },
   { link: '/ordering-public/#/leaderboard', label: 'Leaderboard', icon: <IconChartBar size="2rem" stroke={1.5}/> },
-  { link: '/#/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
-  { link: '/#/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
-  { link: '/#/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
+  { link: '/ordering-public/#/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
+  { link: '/ordering-public/#/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
+  { link: '/ordering-public/#/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
 ];
 
 export function HeaderSimple() {
