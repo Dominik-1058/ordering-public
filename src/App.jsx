@@ -37,29 +37,31 @@ function App() {
 
   return (
     <div className={classes.App}>
-      {isSmallScreen && user.name !== 'admin' ? (
-        <>
-          {user ? <HeaderComponent /> : null}
-          <div className={classes.layout}>
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/" element={<ProtectedRoute />}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/leaderboard" element={<LeaderboardPage />} />
-                <Route path="/admin/manage-items" element={<ManageItemsPage />} />
-                <Route path="/admin/manage-orders" element={<ManageOrdersPage />} />
-                <Route path="/admin/manage-ingredients" element={<ManageIngredientsPage />} />
-              </Route>
-            </Routes>
-          </div>
-          <footer></footer>
-        </>
-      ) : (
-        <Stack justify='center' align='center' style={{ height: "100%" }} p={'2rem'}>
-          <Title order={3}>Stop using landscape mode and large screens.</Title>
-          <Title order={5}>Vampurr is watching you.</Title>
-        </Stack>
-      )}
+      <>
+        {isSmallScreen && user && user.name !== 'admin' ? (
+          <>
+            {user ? <HeaderComponent /> : null}
+            <div className={classes.layout}>
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/" element={<ProtectedRoute />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/leaderboard" element={<LeaderboardPage />} />
+                  <Route path="/admin/manage-items" element={<ManageItemsPage />} />
+                  <Route path="/admin/manage-orders" element={<ManageOrdersPage />} />
+                  <Route path="/admin/manage-ingredients" element={<ManageIngredientsPage />} />
+                </Route>
+              </Routes>
+            </div>
+            <footer></footer>
+          </>
+        ) : (
+          <Stack justify='center' align='center' style={{ height: "100%" }} p={'2rem'}>
+            <Title order={3}>Stop using landscape mode and large screens.</Title>
+            <Title order={5}>Vampurr is watching you.</Title>
+          </Stack>
+        )}
+      </>
     </div>
   )
 }
