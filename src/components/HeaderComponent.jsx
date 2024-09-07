@@ -45,10 +45,13 @@ export function HeaderSimple() {
   const { user, logout } = useAuth();
   const isAdmin = user && user.username === 'admin';
 
+  console.log("################");
+  console.log("location üpathname", location.pathname)
   console.log('location', location);
   console.log('homeLink', homeLink);
   console.log('leaderboardLink', leaderboardLink);
   console.log(location.pathname === leaderboardLink.link.split('#')[1]);
+  console.log(location.pathname === homeLink.link.split('#')[1]);
 
   const handleLogout = () => {
     logout();
@@ -79,7 +82,7 @@ export function HeaderSimple() {
                   {homeLink.icon}
                 </Anchor>
               </>
-            ) : location.pathname === homeLink.link.split('#')[1] ? (
+            ) : location.pathname === '/' ? (
               <>
                 <Anchor 
                   key={leaderboardLink.label}
