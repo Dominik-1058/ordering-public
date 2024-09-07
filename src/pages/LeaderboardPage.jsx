@@ -35,6 +35,16 @@ const LeaderboardPage = () => {
             });
     }, []);
 
+    useEffect(() => {
+        // Set an interval to refresh the page every minute (60000 ms)
+        const interval = setInterval(() => {
+          window.location.reload();
+        }, 60000); // 60000ms = 1 minute
+    
+        // Cleanup interval on component unmount
+        return () => clearInterval(interval);
+      }, []);
+
     console.log("Leaderboard data: ", leaderboardData);
 
     return (

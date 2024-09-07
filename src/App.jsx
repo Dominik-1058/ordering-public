@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
+import { Box, Container, Grid, Group, Stack, Table, Title, Text, Center, SegmentedControl } from '@mantine/core';
 
 import HeaderComponent from './components/HeaderComponent';
 import HomePage from './pages/HomePage';
@@ -19,22 +20,46 @@ function App() {
 
   const { user } = useAuth();
 
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 430);
+
+  useEffect(() => {
+    // Function to handle screen size change
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 430);
+    };
+
+    // Add event listener to listen for window resizing
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function to remove event listener
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className={classes.App}>
-        {user ? <HeaderComponent /> : null }
-        <div className={classes.layout}>
-          <Routes>
+      {isSmallScreen && user.name !== 'admin' ? (
+        <>
+          {user ? <HeaderComponent /> : null}
+          <div className={classes.layout}>
+            <Routes>
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/" element={<ProtectedRoute />} >
+              <Route path="/" element={<ProtectedRoute />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/leaderboard" element={<LeaderboardPage />} />
                 <Route path="/admin/manage-items" element={<ManageItemsPage />} />
                 <Route path="/admin/manage-orders" element={<ManageOrdersPage />} />
                 <Route path="/admin/manage-ingredients" element={<ManageIngredientsPage />} />
               </Route>
-          </Routes>
-        </div>
-        <footer></footer>
+            </Routes>
+          </div>
+          <footer></footer>
+        </>
+      ) : (
+        <Stack justify='center' align='center' style={{ height: "100%" }} p={'2rem'}>
+          <Title order={3}>Stop using landscape mode and large screens.</Title>
+          <Title order={5}>Vampurr is watching you.</Title>
+        </Stack>
+      )}
     </div>
   )
 }

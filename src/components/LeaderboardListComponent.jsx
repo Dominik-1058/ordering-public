@@ -27,7 +27,7 @@ const LeaderboardListComponent = ({ leaderboard_type, type }) => {
                         <Title>{position}</Title>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Text>{user.name}</Text>
+                        <Text>{user.name.length > 34 ? user.name.slice(0, 30) + "..." : user.name}</Text>
                     </Grid.Col>
                     <Grid.Col span={3} align='center'>
                         <Text>{score}</Text>
@@ -38,7 +38,7 @@ const LeaderboardListComponent = ({ leaderboard_type, type }) => {
     });
 
     return (
-        <Stack mt="md" style={{ backgroundColor: 'var(--mantine-color-mainBg-0)', gap: 0, borderRadius: '30px' }}>
+        <Stack mt="md" style={{ backgroundColor: 'var(--mantine-color-mainBg-0)', gap: 0, borderRadius: '30px', overflowY: "scroll", overflowX: "hidden", height: 'calc(100vh - 100px - 100px)' }}>
             {leaderboard}
         </Stack>            
     );
