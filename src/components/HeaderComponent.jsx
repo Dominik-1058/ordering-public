@@ -7,11 +7,11 @@ import classes from './HeaderComponent.module.css';
 import { useAuth } from '../AuthContext';
 
 const links = [
-  { link: '/', label: 'Home', icon: <IconGlassCocktail size="2rem" stroke={1.5}/> },
-  { link: '/leaderboard', label: 'Leaderboard', icon: <IconChartBar size="2rem" stroke={1.5}/> },
-  { link: '/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
-  { link: '/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
-  { link: '/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
+  { link: '/#/', label: 'Home', icon: <IconGlassCocktail size="2rem" stroke={1.5}/> },
+  { link: '/#/leaderboard', label: 'Leaderboard', icon: <IconChartBar size="2rem" stroke={1.5}/> },
+  { link: '/#/admin/manage-ingredients', label: 'Ingredients', icon: <IconGlassCocktail size="2rem" stroke={1.5}/>},
+  { link: '/#/admin/manage-items', label: 'Items', icon: <IconHome2 size="2rem" stroke={1.5}/> },
+  { link: '/#/admin/manage-orders', label: 'Orders', icon: <IconGauge size="2rem" stroke={1.5}/> },
 ];
 
 export function HeaderSimple() {
@@ -43,6 +43,7 @@ export function HeaderSimple() {
   const location = useLocation();
 
   const { user, logout } = useAuth();
+  const isAdmin = user && user.username === 'admin';
 
   const handleLogout = () => {
     logout();
@@ -54,20 +55,15 @@ export function HeaderSimple() {
       <header className={classes.header} style={{ position: 'fixed', top: 0, left: 0, right:0, zIndex:1000 }}>
         <div className={classes.inner}>
           
-          <Group gap={5} visibleFrom="xs">
-            {items} 
-          </Group>
-          <Group gap={5} visibleFrom="xs">
-            <Text size='xs'>Hello, {user.username}</Text>
-            <Button
-              onClick={handleLogout}
-              variant='subtle'
-            >
-              <IconLogout size="1rem" />
-            </Button>
-          </Group>
+          {isAdmin && (
+            <>
+              <Group gap={5} visibleFrom="xs">
+                {items} 
+              </Group>
+            </>
+          )}
 
-          <Group hiddenFrom='xs'>
+          <Group hiddenFrom={isAdmin ? 'xs' : undefined}>
             {location.pathname === leaderboardLink.link ? (
               <>
                 <Anchor 
@@ -90,6 +86,15 @@ export function HeaderSimple() {
               </>
             ) : null}
 
+          </Group>
+          <Group gap={5}>
+            <Text size='xs'>Hello, {user.username}</Text>
+            <Button
+              onClick={handleLogout}
+              variant='subtle'
+            >
+              <IconLogout size="1rem" />
+            </Button>
           </Group>
         </div>
       </header>

@@ -28,9 +28,9 @@ function App() {
               <Route path="/" element={<ProtectedRoute />} >
                 <Route path="/" element={<HomePage />} />
                 <Route path="/leaderboard" element={<LeaderboardPage />} />
-                <Route path="/admin/manage-items" element={<ManageItemsPage />} />
-                <Route path="/admin/manage-orders" element={<ManageOrdersPage />} />
-                <Route path="/admin/manage-ingredients" element={<ManageIngredientsPage />} />
+                <Route path="/manage-items" element={<ManageItemsPage />} />
+                <Route path="/manage-orders" element={<ManageOrdersPage />} />
+                <Route path="/manage-ingredients" element={<ManageIngredientsPage />} />
               </Route>
           </Routes>
         </div>
